@@ -2,16 +2,36 @@
   const hero = document.querySelector('.hero');
   const message = document.querySelector('.hero-message');
   if (hero && message) {
+    const character = hero.querySelector('.hero-character-image');
+    const poses = {
+      idle: character?.dataset.working,
+      left: character?.dataset.lookLeft,
+      right: character?.dataset.lookRight,
+      hello: character?.dataset.greeting,
+      pointing: character?.dataset.pointing
+    };
     const copy = {
       idle: 'Move around to say hello',
       left: 'Looking for something over here?',
       right: 'And what’s happening over there?',
-      hello: 'Hey, it’s you! Welcome to my portfolio.'
+      hello: 'Hey, it’s you! Welcome to my portfolio.',
+      pointing: 'A little further down — explore my work.'
     };
     let resetTimer;
     const setMood = mood => {
       hero.dataset.mood = mood;
       message.textContent = copy[mood] || copy.idle;
+      if (character && poses[mood] && character.getAttribute('src') !== poses[mood]) {
+        character.style.opacity = '0.35';
+        const nextSrc = poses[mood];
+        const preload = new Image();
+        preload.onload = () => {
+          character.src = nextSrc;
+          requestAnimationFrame(() => { character.style.opacity = '1'; });
+        };
+        preload.onerror = () => { character.style.opacity = '1'; };
+        preload.src = nextSrc;
+      }
       clearTimeout(resetTimer);
       if (mood === 'left' || mood === 'right') {
         resetTimer = setTimeout(() => setMood('idle'), 2400);
