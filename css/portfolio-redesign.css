@@ -63,3 +63,19 @@
 @media(max-width:900px){.hero{grid-template-columns:1fr 1.2fr;padding-top:110px}.hero-side.right{display:none}.character-image-wrap{height:clamp(300px,48vw,470px)}}
 @media(max-width:640px){.hero{grid-template-columns:1fr;min-height:auto;padding-top:120px;padding-bottom:80px}.hero-side{max-width:100%;text-align:center}.hero h1 br{display:none}.hero-copy{max-width:420px;margin-left:auto;margin-right:auto}.hero-side.left .microcopy{margin-top:15px}.hero-art{min-height:0;margin-top:12px;grid-row:2}.character-image-wrap{width:min(100%,430px);height:390px}.hero-message{font-size:.85rem}.hero:before{width:340px;height:340px}.hero:after{width:430px;height:430px}.scroll-cue{bottom:22px}}
 @media(prefers-reduced-motion:reduce){.hero-character-image{animation:none!important;transition:none!important}}
+
+
+/* Video-based hero character: match the clip's cream background and keep the visual seamless. */
+.hero-art{flex-direction:column;gap:0;min-width:0}
+.hero-art .halo{pointer-events:none}
+.character-image-wrap{position:relative;z-index:1;width:min(100%,640px);height:auto;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;overflow:hidden;border:0;border-radius:0;background:#fffaf8}
+.hero-character-video{display:block;width:100%;height:100%;object-fit:contain;object-position:center;border:0;border-radius:0;background:#fffaf8;outline:0}
+.hero .hero-side.right .microcopy{display:none}
+@media(max-width:900px){
+  .character-image-wrap{width:min(100%,600px);height:auto;aspect-ratio:16/9;margin-inline:auto}
+  .hero-art{min-height:0}
+}
+@media(max-width:600px){
+  .character-image-wrap{width:min(100%,520px);height:auto;aspect-ratio:16/9}
+  .hero-character-video{width:100%;height:100%}
+}
