@@ -79,3 +79,65 @@
   .character-image-wrap{width:min(100%,520px);height:auto;aspect-ratio:16/9}
   .hero-character-video{width:100%;height:100%}
 }
+
+
+/* Site-wide ambient blush: soft, blurred dusky-rose light for depth without visual clutter. */
+body{
+  position:relative;
+  isolation:isolate;
+  background:#fffaf8;
+}
+body::before,
+body::after{
+  content:"";
+  position:fixed;
+  z-index:0;
+  pointer-events:none;
+  width:min(42vw,620px);
+  aspect-ratio:1;
+  border-radius:50%;
+  filter:blur(85px);
+  opacity:.32;
+  will-change:transform;
+}
+body::before{
+  top:8vh;
+  left:-17vw;
+  background:radial-gradient(circle,rgba(190,126,151,.58) 0%,rgba(213,166,184,.28) 42%,rgba(213,166,184,0) 72%);
+  animation:ambient-drift-one 26s ease-in-out infinite alternate;
+}
+body::after{
+  top:48vh;
+  right:-18vw;
+  background:radial-gradient(circle,rgba(166,105,132,.42) 0%,rgba(220,177,194,.24) 43%,rgba(220,177,194,0) 72%);
+  animation:ambient-drift-two 32s ease-in-out infinite alternate;
+}
+body > header,
+body > main,
+body > footer{
+  position:relative;
+  z-index:1;
+}
+/* Let a little of the ambient colour show through the light sections. */
+.hero{
+  background:radial-gradient(ellipse at 50% 48%,rgba(255,255,255,.84) 0%,rgba(255,250,249,.78) 36%,rgba(246,232,237,.70) 72%,rgba(231,203,213,.62) 100%);
+}
+.section[style*="background:#fffdfc"]{
+  background:rgba(255,253,252,.84)!important;
+}
+@keyframes ambient-drift-one{
+  0%{transform:translate3d(0,0,0) scale(.92)}
+  100%{transform:translate3d(12vw,10vh,0) scale(1.12)}
+}
+@keyframes ambient-drift-two{
+  0%{transform:translate3d(0,0,0) scale(1.08)}
+  100%{transform:translate3d(-10vw,-12vh,0) scale(.9)}
+}
+@media(max-width:640px){
+  body::before,body::after{width:78vw;filter:blur(65px);opacity:.25}
+  body::before{left:-35vw;top:15vh}
+  body::after{right:-38vw;top:55vh}
+}
+@media(prefers-reduced-motion:reduce){
+  body::before,body::after{animation:none!important}
+}
