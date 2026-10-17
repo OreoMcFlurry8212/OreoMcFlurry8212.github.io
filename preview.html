@@ -29,28 +29,26 @@
         <p class="microcopy"><span class="dot"></span> Currently pursuing M.Sc. EEIT at OVGU, Germany</p>
       </div>
 
-      <div class="hero-art" aria-label="Interactive 3D character of Durva at her creative workspace">
+      <div class="hero-art" aria-label="Animated illustration of Durva working and welcoming visitors">
         <div class="halo" aria-hidden="true"></div>
         <div class="character-image-wrap">
-          <img
-            class="hero-character-image"
-            src="images/durva-working.png"
-            data-working="images/durva-working.png"
-            data-look-left="images/durva-look-left.png"
-            data-look-right="images/durva-look-right.png"
-            data-greeting="images/durva-greeting.png"
-            data-pointing="images/durva-pointing.png"
-            alt="Durva smiling softly while working at her laptop"
-            fetchpriority="high"
+          <video
+            class="hero-character-video"
+            autoplay
+            muted
+            playsinline
+            preload="auto"
+            poster="images/durva-working.png"
+            aria-label="Durva working at her laptop, then welcoming visitors and pointing toward her portfolio"
           >
+            <source src="videos/durva-hero.mp4" type="video/mp4">
+          </video>
         </div>
-        <div class="hero-message" aria-live="polite">Move around to say hello</div>
       </div>
 
       <div class="hero-side right">
         <span class="eyebrow">Curious mind, many tabs open</span>
         <p class="hero-copy">UX · Web design · AI quality evaluation · Interactive systems</p>
-        <p class="microcopy">Move your cursor around to interact ↗</p>
       </div>
       <a class="scroll-cue" href="#about">A little more about me ↓</a>
     </section>
